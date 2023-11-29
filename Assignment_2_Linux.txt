@@ -1,0 +1,72 @@
+echo "1.Write a shell script to find the sum, the average and the product of the four integers entered"
+sum=`echo -e " $1 + $2 + $3 + $4 "|bc`
+echo "sum=$sum"
+avg=`echo -e "$sum / $#"|bc`
+echo "avg=$avg"
+pro=`echo -e "$1*$2*$3*$4"|bc`
+echo "product=$pro"
+
+echo "2.Write a shell program to exchange the values of two variables"
+x=$1
+y=$2
+echo "elements before swapping:"$x $y
+temp=$1
+x=$y
+y=$temp
+echo "elements after swapping:"$x $y
+
+echo "3.Write a shell script to find the largest among the 3 given numbers"
+if [ $1 -gt $2 -a $1 -gt $3 ]
+then
+echo "$1 is the greatest"
+elif [ $2 -gt $1 -a $2 -gt $3 ]
+then 
+echo "$2 is the greatest"
+else
+echo "$3 is the greatest"
+fi
+
+echo "4.WAP that takes a filename as input and checks if it is executable, if not make it executable."
+read -p "Enter a filename you wish to execute" a
+if test $(ls -l $a | grep "x" -c) -eq 1
+
+then
+
+echo "File is executable"
+
+        if test $(ls -l $a | grep "rwxr" -o | wc -l) -eq 1
+        then
+        echo "user"
+        else
+        echo "groups/others"
+        fi
+
+else
+echo "file is not executable"
+chmod 777 $a
+echo "file is now executable"
+ls -l $a
+fi
+
+
+
+
+
+
+echo "5.WAP which displays the following menu and executes the option selected by user:"
+read -p "Enter your choice from [1-4] to perform the operations of (ls,pwd,ls -l,ps -fe)" ch
+case $ch in
+1) ls
+;;
+2) pwd
+;;
+3) ls -l
+;;
+4) ps -fe
+;;
+*) echo "Enter the correct option"
+;;
+esac
+
+
+

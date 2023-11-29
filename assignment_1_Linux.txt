@@ -1,0 +1,69 @@
+echo "1.Create files file1 and file2 in directory dir1 and file3 in dir2."
+mkdir dir1 dir2
+touch  dir1/file1 dir1/file2 dir2/file3
+ls -R
+
+echo "2.Copy the contents of file1 and file 2 into file3 residing in dir2."
+cat dir1/file1 >> dir2/file3
+cat dir1/file2 >> dir2/file3
+cat dir2/file3
+
+
+echo "3.Move the file file1 and file2 to the directory where file3 resides."
+mv dir1/file1 dir2
+mv dir1/file2 dir2
+ls -R
+
+echo "4.Rename the file1 to newfile1"
+mv dir2/file2 dir2/newfileStem
+ls -R
+
+echo "5.Display the contents of any file 15 lines at a time starting from the 10th line"
+
+b=`more +10 -15 f5`
+echo -e "$b\c"
+
+
+echo"6.Squeeze multiple blank lines to single blank line present in the file."
+
+
+cat -ns f5
+
+
+echo "7.Display the directory structure in hierarchical manner"
+ls -R 
+
+
+
+echo "8.Display the directory structure in reverse order"
+ls -r 
+
+
+echo "9.How will you list the current directory in columnar format"
+ls -ld
+
+echo "10.Delete an non empty directory"
+echo `mkdir d77`
+echo `touch d77/f1`
+ls -R
+rm -r d77
+
+
+echo "11.Find the length of a string"
+echo -n "Stemy"|wc -c
+
+
+echo "Display the column names"
+head -1 empdata
+
+echo "Display the first 5 employees."
+#more +2 -5 empdata
+
+echo "Display the last 5 employees along with the header"
+head -1 empdata;tail -6 empdata
+
+echo "Display the employees from 5th to next 3 employees along with the header"
+head -1 empdata;more +5 -3 empdata
+
+echo "Display the name and age and salary of all employees"
+head -1 empdata|cut -f2,3,4;cut -f3,5,6 empdata|tail -5 
